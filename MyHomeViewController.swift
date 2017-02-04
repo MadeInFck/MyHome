@@ -11,12 +11,16 @@ import UIKit
 class MyHomeViewController: UIViewController {
 
     @IBOutlet weak var myHomeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        myHomeLabel.font = UIFont(name: "Pacifico", size: 25)
-        // Do any additional setup after loading the view.
+        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        myHomeLabel.clipsToBounds = true
+        myHomeLabel.layer.cornerRadius = 20
 
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

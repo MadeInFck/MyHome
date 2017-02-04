@@ -12,26 +12,22 @@ import UserNotifications
 class AlarmViewController: UIViewController {
 
     
+    @IBOutlet weak var backBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var alarmLabel: UILabel!
     var intrusions : [Intrusion] = []
     var ref : FIRDatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Pacifico", size: 25)!]
+        self.backBarButtonItem.setTitleTextAttributes([NSFontAttributeName : UIFont(name: "Pacifico", size: 15)!], for: UIControlState())
         ref = FIRDatabase.database().reference()
-        self.ref.child("intrusions").observe(.childAdded) { (snapshot:FIRDataSnapshot) in
-            let intrusion = Intrusion()
-            intrusion.key = snapshot.key
-            print(intrusion.key)
-            let value = snapshot.value as? NSDictionary
-            intrusion.date  = (value!["date"] as? String)!
-            self.intrusions.append(intrusion)
-            
-        }
-        print(self.intrusions.description)
+     
     }
 
+    @IBAction func backAction(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
