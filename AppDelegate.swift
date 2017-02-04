@@ -76,6 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.sandbox)
     }
     
+    
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // If you are receiving a notification message while your app is in the background,
@@ -89,7 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Print full message.
         print(userInfo)
         
-        let defaults = NSUserDefault
         completionHandler(UIBackgroundFetchResult.newData)
     }
 
@@ -116,6 +117,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Unable to connect with FCM. \(error)")
             } else {
                 print("Connected to FCM.")
+                FIRMessaging.messaging().subscribe(toTopic: "/topics/alerte")
+                print("Suscribed to new topic!")
             }
         }
     }
