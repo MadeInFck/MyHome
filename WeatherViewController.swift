@@ -10,12 +10,32 @@ import UIKit
 
 class WeatherViewController: UIViewController {
 
+    @IBOutlet weak var pressureLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var backButtonItem: UIBarButtonItem!
     @IBOutlet weak var trendsBarButtonItem: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let url=URL(string:"https://thingspeak.com/channels/72262/feed")
+        do {
+            let allDataLoad = try Data(contentsOf: url!)
+            let allData = try JSONSerialization.jsonObject(with: allDataLoad, options: JSONSerialization.ReadingOptions.allowFragments) as! [String : AnyObject]
+            if let feedJSON = allData["feeds"] {
+                let lastData = feedJSON.lastObject as! [String: AnyObject]
+                print(lastData)
+                    pressureLabel.text = (lastData["field2"] as! String) + " mBar"
+                    tempLabel.text = (lastData["field1"] as! String) + "°C"
+            }
+        }
+        catch {
+            tempLabel.text = ""
+            pressureLabel.text = ""
+            let alert = UIAlertController(title: "Caution", message: "Unable to get data from Thingspeak. Please verify your connection", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
+                
+            })
+            self.present(alert, animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

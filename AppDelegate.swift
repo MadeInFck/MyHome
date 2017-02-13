@@ -39,13 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         application.registerForRemoteNotifications()
-        
+        application.applicationIconBadgeNumber = 0
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.tokenRefreshNotification),
                                                name: .firInstanceIDTokenRefresh,
                                                object: nil)
         return true
     }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -63,6 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         connectToFcm()
+        application.applicationIconBadgeNumber = 0
+
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

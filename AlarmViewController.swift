@@ -21,27 +21,49 @@ class AlarmViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Pacifico", size: 25)!]
         self.backBarButtonItem.setTitleTextAttributes([NSFontAttributeName : UIFont(name: "Pacifico", size: 15)!], for: UIControlState())
+        
+        //create()
+        
         ref = FIRDatabase.database().reference()
-     
+        ref.child("intrusions").queryLimited(toLast: 1).observe(.value, with: { (snapshot) in
+            if snapshot.exists() {
+                print(snapshot)
+                let intrusion = Intrusion()
+                let result = snapshot.children.allObjects as? [FIRDataSnapshot]
+                let idLast = result?[0].key
+                intrusion.date = snapshot.childSnapshot(forPath: "\(idLast!)/date").value! as! String
+                intrusion.time = snapshot.childSnapshot(forPath: "\(idLast!)/time").value! as! String
+                intrusion.key = idLast!
+                intrusion.device = snapshot.childSnapshot(forPath: "\(idLast!)/device").value! as! String
+                self.alarmLabel.text = intrusion.description()
+            } else {
+                self.alarmLabel.text = "No intrusion noticed by the watchkeeper !"
+            }
+        })
     }
 
     @IBAction func backAction(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    @IBAction func createIntrusion(_ sender: UIButton) {
+        create()
     }
     
+    func create() {
+        ref = FIRDatabase.database().reference()
+        let key = ref.child("intrusions").childByAutoId().key
+        let currentDate = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        let convertedTime = dateFormatter.string(from: currentDate as Date)
+        dateFormatter.dateFormat = "dd/MM/YYYY"
+        let convertedDate = dateFormatter.string(from: currentDate as Date)
+        let post = ["date" : convertedDate,
+                    "time" : convertedTime,
+                    "device" : "I001"]
+        let childUpdates = ["/intrusions/\(key)": post]
+        ref.updateChildValues(childUpdates)
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }

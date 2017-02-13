@@ -11,5 +11,10 @@ import Foundation
 class Intrusion {
     var device = ""
     var date = ""
+    var time = ""
     var key = ""
+
+    func description()->String {
+        return device + " detected motion on the " + date + " at " + time + "."
+    }
 }
