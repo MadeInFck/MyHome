@@ -11,6 +11,8 @@ import UIKit
 class MyHomeViewController: UIViewController {
 
     @IBOutlet weak var myHomeLabel: UILabel!
+    @IBOutlet weak var WxButton: UIButton!
+    @IBOutlet weak var AlarmButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +21,14 @@ class MyHomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         myHomeLabel.clipsToBounds = true
         myHomeLabel.layer.cornerRadius = 20
+        
+        WxButton.layer.shadowOffset.height = 5
+        WxButton.layer.shadowOffset.width = 5
+        WxButton.layer.shadowRadius = 10
+        WxButton.layer.shadowColor = UIColor.black.cgColor
+        WxButton.layer.shadowOpacity = 1
 
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation
