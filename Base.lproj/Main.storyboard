@@ -205,15 +205,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="0.1195367133" green="0.62240493880000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ee-3O-v88">
-                                <rect key="frame" x="60" y="450" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="D+1" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gCZ-hX-cee">
+                                <rect key="frame" x="196" y="450" width="86" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="D+1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCZ-hX-cee">
-                                <rect key="frame" x="218" y="450" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="D" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ee-3O-v88">
+                                <rect key="frame" x="38" y="450" width="86" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -252,8 +252,10 @@
                     <connections>
                         <outlet property="activityIndicator" destination="aPM-wA-ePQ" id="Ai0-O1-oDj"/>
                         <outlet property="backButtonItem" destination="f9e-Mq-Xc5" id="SHU-tL-W5d"/>
+                        <outlet property="dayLabel" destination="4ee-3O-v88" id="azB-oZ-Y5e"/>
                         <outlet property="imageViewDay" destination="GsP-Ks-Mvd" id="Nou-DX-65J"/>
                         <outlet property="imageViewNextDay" destination="pVR-HZ-NBL" id="94P-4K-Nvn"/>
+                        <outlet property="nextDayLabel" destination="gCZ-hX-cee" id="2lY-P0-SMY"/>
                         <outlet property="pressureLabel" destination="4mD-Ad-ZBS" id="SzW-uK-gkc"/>
                         <outlet property="tempLabel" destination="af8-as-urb" id="zJt-2O-bKf"/>
                         <outlet property="trendsBarButtonItem" destination="Pfa-wO-3zr" id="1Ft-1m-Y4J"/>
