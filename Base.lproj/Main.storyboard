@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="W1P-mA-E8G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="W1P-mA-E8G">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -284,14 +284,6 @@
                                     <constraint firstAttribute="width" constant="240" id="lBU-Jy-73f"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRK-2I-Mfe">
-                                <rect key="frame" x="137" y="518" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create"/>
-                                <connections>
-                                    <action selector="createIntrusion:" destination="63b-cs-hBj" eventType="touchUpInside" id="f5C-78-wxV"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3I-vV-pBr">
                                 <rect key="frame" x="16" y="354" width="288" height="81"/>
                                 <constraints>
@@ -302,15 +294,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRK-2I-Mfe">
+                                <rect key="frame" x="85" y="495" width="150" height="33"/>
+                                <color key="backgroundColor" red="0.1195367133" green="0.62240493880000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="CTW-Zb-0Vi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Intrusion logs">
+                                    <color key="titleColor" red="1" green="0.98754522170000003" blue="0.99784384829999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="eVW-0c-AoE" kind="show" id="tKE-7V-iKS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="i3I-vV-pBr" firstAttribute="top" secondItem="JAL-B3-bDp" secondAttribute="bottom" constant="42" id="5Ne-1g-bst"/>
                             <constraint firstItem="JAL-B3-bDp" firstAttribute="top" secondItem="vpt-wV-qAi" secondAttribute="bottom" constant="8" id="G9H-4O-7ao"/>
+                            <constraint firstItem="DZE-SG-0LO" firstAttribute="top" secondItem="VRK-2I-Mfe" secondAttribute="bottom" constant="40" id="KeP-wG-KxV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JAL-B3-bDp" secondAttribute="trailing" constant="24" id="SqL-x0-nFh"/>
                             <constraint firstItem="JAL-B3-bDp" firstAttribute="leading" secondItem="SFu-ai-mz0" secondAttribute="leadingMargin" constant="24" id="TfN-gC-qPa"/>
                             <constraint firstItem="i3I-vV-pBr" firstAttribute="leading" secondItem="SFu-ai-mz0" secondAttribute="leadingMargin" id="aqy-8m-VpL"/>
                             <constraint firstItem="i3I-vV-pBr" firstAttribute="trailing" secondItem="SFu-ai-mz0" secondAttribute="trailingMargin" id="mql-Xs-EsO"/>
+                            <constraint firstItem="VRK-2I-Mfe" firstAttribute="centerX" secondItem="SFu-ai-mz0" secondAttribute="centerX" id="wcy-If-IEI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Alarm" id="oED-Rb-GYd">
@@ -323,11 +331,105 @@
                     <connections>
                         <outlet property="alarmLabel" destination="i3I-vV-pBr" id="rlQ-7c-ShW"/>
                         <outlet property="backBarButtonItem" destination="K7q-IX-PRb" id="QcO-wR-pHz"/>
+                        <outlet property="logButton" destination="VRK-2I-Mfe" id="hNR-UG-2ZU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfv-GT-xPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3090" y="556.69014084507046"/>
+            <point key="canvasLocation" x="2996" y="557"/>
+        </scene>
+        <!--IntrusionTableView-->
+        <scene sceneID="fXD-H5-uwq">
+            <objects>
+                <tableViewController title="IntrusionTableView" id="bOC-kh-2tc" customClass="IntrusionLogTableViewController" customModule="MyHome" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="117" sectionHeaderHeight="28" sectionFooterHeight="28" id="H19-Df-pTb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="intrusionCell" rowHeight="117" id="AFB-te-h2F" customClass="IntrusionTableViewCell" customModule="MyHome" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="117"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AFB-te-h2F" id="niO-7w-D1u">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="116.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyn-WT-Qey">
+                                            <rect key="frame" x="75" y="11" width="237" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="On the" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tv-W2-UcP">
+                                            <rect key="frame" x="8" y="11" width="112" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDx-iT-KVq">
+                                            <rect key="frame" x="8" y="39" width="35" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detected by : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSN-2M-csB">
+                                            <rect key="frame" x="8" y="80" width="102" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3L-A4-Wsf">
+                                            <rect key="frame" x="147" y="80" width="112" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcT-VR-qT9">
+                                            <rect key="frame" x="43" y="39" width="261" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="uyn-WT-Qey" id="CI0-Zj-S3r"/>
+                                    <outlet property="deviceLabel" destination="A3L-A4-Wsf" id="gRw-ZE-fda"/>
+                                    <outlet property="timeLabel" destination="FcT-VR-qT9" id="gcv-vB-1IC"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bOC-kh-2tc" id="Jjy-pl-tlL"/>
+                            <outlet property="delegate" destination="bOC-kh-2tc" id="vCD-KJ-PMZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Intrusions Log" id="Xcp-Sq-bEj">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="qzX-bm-Jt1">
+                            <connections>
+                                <action selector="backAction:" destination="bOC-kh-2tc" id="e9z-UC-yao"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Erase" id="ERZ-Xh-AfJ">
+                            <connections>
+                                <action selector="eraseButton:" destination="bOC-kh-2tc" id="bI2-rt-YeI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backButtonItem" destination="qzX-bm-Jt1" id="hNk-zE-Xyo"/>
+                        <outlet property="eraseBarButton" destination="ERZ-Xh-AfJ" id="OrX-SG-h3w"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XCc-U3-Kqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4936.875" y="556.69014084507046"/>
         </scene>
         <!--Trends-->
         <scene sceneID="uVo-5d-dvj">
@@ -467,6 +569,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dcB-ji-YGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2092.5" y="556.69014084507046"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="afc-YP-cu8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eVW-0c-AoE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t27-Zj-gRl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bOC-kh-2tc" kind="relationship" relationship="rootViewController" id="vT9-BM-4dR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8wo-wW-lZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3941" y="557"/>
         </scene>
     </scenes>
     <resources>

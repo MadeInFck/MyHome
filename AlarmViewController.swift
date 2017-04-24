@@ -14,7 +14,7 @@ class AlarmViewController: UIViewController {
     
     @IBOutlet weak var backBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var alarmLabel: UILabel!
-    var intrusions : [Intrusion] = []
+    @IBOutlet weak var logButton: UIButton!
     var ref : FIRDatabaseReference!
 
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class AlarmViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Pacifico", size: 25)!]
         self.backBarButtonItem.setTitleTextAttributes([NSFontAttributeName : UIFont(name: "Pacifico", size: 15)!], for: UIControlState())
         
-        //create()
+        self.logButton.layer.cornerRadius = 5;
         
         ref = FIRDatabase.database().reference()
         ref.child("intrusions").queryLimited(toLast: 1).observe(.value, with: { (snapshot) in
@@ -46,10 +46,9 @@ class AlarmViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func createIntrusion(_ sender: UIButton) {
-        create()
-    }
     
+    
+    /* Helper function to create an intrusion
     func create() {
         ref = FIRDatabase.database().reference()
         let key = ref.child("intrusions").childByAutoId().key
@@ -65,5 +64,5 @@ class AlarmViewController: UIViewController {
         let childUpdates = ["/intrusions/\(key)": post]
         ref.updateChildValues(childUpdates)
 
-    }
+    } */
 }
