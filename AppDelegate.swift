@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import UserNotificationsUI
 
 
 @UIApplicationMain
@@ -149,7 +150,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print(userInfo)
         
         // Change this to your preferred presentation option
-        completionHandler([])
+        completionHandler([.alert,.sound])
+        let intrusionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AlarmViewController") as! AlarmViewController
+        let rootViewController = self.window!.rootViewController
+        rootViewController?.present(intrusionVC, animated: false, completion: nil)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -166,6 +170,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         completionHandler()
     }
+
 }
 
 extension AppDelegate : FIRMessagingDelegate {
